@@ -1,0 +1,252 @@
+<div class="flex flex-row justify-between">
+  <div class="flex flex-col gap-2">
+    <h1 class="text-2xl font-bold text-gray-800 tracking-tight">Dashboard</h1>
+    <h1 class="text-xl text-gray-600">Welcome back, Admin</h1>
+  </div>
+  <div class="flex flex-col justify-center">
+    <div
+      class="rounded-2xl px-6 py-2 bg-blue-600 text-white flex flex-row items-center justify-center font-semibold gap-2 cursor-pointer transition-all hover:bg-blue-700 hover:scale-105 active:scale-95"
+    >
+      <hugeicons-icon
+        [icon]="plusIcon"
+        [size]="16"
+        [strokeWidth]="2"
+        color="currentColor"
+        class="text-white"
+      ></hugeicons-icon>
+      New Report
+    </div>
+  </div>
+</div>
+
+<!-- STATS CARDS -->
+<div class="grid grid-cols-3 gap-6 mt-6">
+  <!-- CARD STUDENTS -->
+  <div class="rounded-2xl px-6 py-6 bg-white shadow-sm border border-gray-100">
+    <div class="flex justify-between items-center">
+      <div class="rounded-lg bg-[#B7C4FF]/20 w-12 h-10 flex items-center justify-center px-3 py-3">
+        <hugeicons-icon
+          [icon]="studentIcon"
+          [size]="24"
+          [strokeWidth]="1.5"
+          color="currentColor"
+          class="text-[#003EC7]"
+        ></hugeicons-icon>
+      </div>
+      <div class="rounded-2xl bg-[#DCFCE7] text-[#16A34A] px-2 py-1 text-sm font-bold">+12%</div>
+    </div>
+    <div class="mt-6 gap-2 flex flex-col">
+      <p class="text-xs font-bold text-gray-400 tracking-tight">TOTAL STUDENTS</p>
+      <p class="text-3xl font-bold leading-9 text-gray-800">1,234</p>
+    </div>
+  </div>
+
+  <!-- CARD LECTURERS -->
+  <div class="rounded-2xl px-6 py-6 bg-white shadow-sm border border-gray-100">
+    <div class="flex justify-between items-center">
+      <div class="rounded-lg bg-[#B7C4FF]/20 w-12 h-10 flex items-center justify-center px-3 py-3">
+        <hugeicons-icon
+          [icon]="teacherIcon"
+          [size]="24"
+          [strokeWidth]="1.5"
+          color="currentColor"
+          class="text-[#003EC7]"
+        ></hugeicons-icon>
+      </div>
+      <div class="rounded-2xl bg-[#E6E8EA] text-[#434656] px-2 py-1 text-sm font-bold">Stable</div>
+    </div>
+    <div class="mt-6 gap-2 flex flex-col">
+      <p class="text-xs font-bold text-gray-400 tracking-tight">TOTAL LECTURERS</p>
+      <p class="text-3xl font-bold leading-9 text-gray-800">120</p>
+    </div>
+  </div>
+
+  <!-- CARD SUBJECTS -->
+  <div class="rounded-2xl px-6 py-6 bg-white shadow-sm border border-gray-100">
+    <div class="flex justify-between items-center">
+      <div class="rounded-lg bg-[#B7C4FF]/20 w-12 h-10 flex items-center justify-center px-3 py-3">
+        <hugeicons-icon
+          [icon]="bookIcon"
+          [size]="24"
+          [strokeWidth]="1.5"
+          color="currentColor"
+          class="text-[#003EC7]"
+        ></hugeicons-icon>
+      </div>
+      <div class="rounded-2xl bg-[#DDE1FF] text-[#003EC7] px-2 py-1 text-sm font-bold">Active</div>
+    </div>
+    <div class="mt-6 gap-2 flex flex-col">
+      <p class="text-xs font-bold text-gray-400 tracking-tight">ACTIVE SUBJECTS</p>
+      <p class="text-3xl font-bold leading-9 text-gray-800">45</p>
+    </div>
+  </div>
+</div>
+
+<div class="flex flex-row gap-6 mt-6">
+  <!-- Recent Enrollments -->
+  <div class="flex-2 rounded-2xl bg-white shadow-sm border border-gray-100">
+    <div class="flex justify-between items-center py-6 px-6">
+      <h1 class="text-lg font-semibold text-gray-800 tracking-tight">Recent Enrollments</h1>
+      <h1 class="text-sm font-semibold text-blue-600">View All</h1>
+    </div>
+    <div class="grid grid-cols-5 bg-gray-100 p-6 border-y border-gray-200">
+      <p class="col-span-2 text-sm font-semibold text-gray-600">Student</p>
+      <p class="col-span-1 text-sm font-semibold text-gray-600">ID Number</p>
+      <p class="col-span-1 text-sm font-semibold text-gray-600">Course</p>
+      <p class="col-span-1 text-sm font-semibold text-gray-600">Status</p>
+    </div>
+    <div class="grid grid-cols-5 p-6 border-b border-gray-100">
+      <p class="col-span-2 text-sm font-semibold text-gray-600 truncate">
+        Zulfitri Hakeem Bin Abdul Rahman
+      </p>
+      <p class="col-span-1 text-sm font-semibold text-gray-600">2313531690</p>
+      <p class="col-span-1 text-sm font-semibold text-gray-600">Computer Science</p>
+      <div class="col-span-1">
+        <p
+          class="w-fit px-3 py-1 bg-[#DCFCE7] text-[#16A34A] text-sm font-semibold rounded-full text-center"
+        >
+          Active
+        </p>
+      </div>
+    </div>
+    <div class="grid grid-cols-5 p-6 border-b border-gray-100">
+      <p class="col-span-2 text-sm font-semibold text-gray-600">John Doe Bin Abdul Rahman</p>
+      <p class="col-span-1 text-sm font-semibold text-gray-600">2313531690</p>
+      <p class="col-span-1 text-sm font-semibold text-gray-600">Computer Science</p>
+      <div class="col-span-1">
+        <p
+          class="w-fit px-3 py-1 bg-[#DCFCE7] text-[#16A34A] text-sm font-semibold rounded-full text-center"
+        >
+          Active
+        </p>
+      </div>
+    </div>
+    <div class="grid grid-cols-5 p-6 border-b border-gray-100">
+      <p class="col-span-2 text-sm font-semibold text-gray-600">Alif Shukri Bin Abdul Rahman</p>
+      <p class="col-span-1 text-sm font-semibold text-gray-600">2313531690</p>
+      <p class="col-span-1 text-sm font-semibold text-gray-600">Computer Science</p>
+      <div class="col-span-1">
+        <p
+          class="w-fit px-3 py-1 bg-[#DCFCE7] text-[#16A34A] text-sm font-semibold rounded-full text-center"
+        >
+          Active
+        </p>
+      </div>
+    </div>
+    <div class="grid grid-cols-5 p-6 border-b border-gray-100">
+      <p class="col-span-2 text-sm font-semibold text-gray-600">Syafiq Kyle Bin Abdul Rahman</p>
+      <p class="col-span-1 text-sm font-semibold text-gray-600">2313531690</p>
+      <p class="col-span-1 text-sm font-semibold text-gray-600">Computer Science</p>
+      <div class="col-span-1">
+        <p
+          class="w-fit px-3 py-1 bg-[#DCFCE7] text-[#16A34A] text-sm font-semibold rounded-full text-center"
+        >
+          Active
+        </p>
+      </div>
+    </div>
+    <div class="grid grid-cols-5 p-6 border-b border-gray-100">
+      <p class="col-span-2 text-sm font-semibold text-gray-600">Syafiq Kyle Bin Abdul Rahman</p>
+      <p class="col-span-1 text-sm font-semibold text-gray-600">2313531690</p>
+      <p class="col-span-1 text-sm font-semibold text-gray-600">Computer Science</p>
+      <div class="col-span-1">
+        <p
+          class="w-fit px-3 py-1 bg-[#DCFCE7] text-[#16A34A] text-sm font-semibold rounded-full text-center"
+        >
+          Active
+        </p>
+      </div>
+    </div>
+    <div class="grid grid-cols-5 p-6 border-b border-gray-100">
+      <p class="col-span-2 text-sm font-semibold text-gray-600">Syafiq Kyle Bin Abdul Rahman</p>
+      <p class="col-span-1 text-sm font-semibold text-gray-600">2313531690</p>
+      <p class="col-span-1 text-sm font-semibold text-gray-600">Computer Science</p>
+      <div class="col-span-1">
+        <p
+          class="w-fit px-3 py-1 bg-[#DCFCE7] text-[#16A34A] text-sm font-semibold rounded-full text-center"
+        >
+          Active
+        </p>
+      </div>
+    </div>
+    <div class="grid grid-cols-5 p-6 border-b border-gray-100">
+      <p class="col-span-2 text-sm font-semibold text-gray-600">Syafiq Kyle Bin Abdul Rahman</p>
+      <p class="col-span-1 text-sm font-semibold text-gray-600">2313531690</p>
+      <p class="col-span-1 text-sm font-semibold text-gray-600">Computer Science</p>
+      <div class="col-span-1">
+        <p
+          class="w-fit px-3 py-1 bg-[#DCFCE7] text-[#16A34A] text-sm font-semibold rounded-full text-center"
+        >
+          Active
+        </p>
+      </div>
+    </div>
+    <div class="grid grid-cols-5 p-6 border-b border-gray-100">
+      <p class="col-span-2 text-sm font-semibold text-gray-600">Emma Watson Bin Abdul Rahman</p>
+      <p class="col-span-1 text-sm font-semibold text-gray-600">2313531690</p>
+      <p class="col-span-1 text-sm font-semibold text-gray-600">Computer Science</p>
+      <div class="col-span-1">
+        <p
+          class="w-fit px-3 py-1 bg-[#DCFCE7] text-[#16A34A] text-sm font-semibold rounded-full text-center"
+        >
+          Active
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Schedule Summary -->
+  <div class="flex-1 gap-6">
+    <div class="rounded-2xl px-6 py-6 bg-white shadow-sm border border-gray-100">
+      <div class="flex justify-between items-center pb-6">
+        <h1 class="text-lg font-semibold text-gray-800 tracking-tight">Schedule Summary</h1>
+        <hugeicons-icon
+          [icon]="scheduleIcon"
+          [size]="24"
+          [strokeWidth]="1.5"
+          color="currentColor"
+          class="text-gray-600"
+        ></hugeicons-icon>
+      </div>
+      <div class="flex gap-4">
+        <div class="flex flex-col items-center w-10">
+          <span class="text-xs font-bold text-gray-400 uppercase">Mon</span>
+          <div class="w-[2px] h-full bg-gray-200 mt-2 rounded-full"></div>
+        </div>
+        <div class="flex-1 bg-blue-50/30 rounded-xl p-4 mb-2 border-l-4 border-blue-600">
+          <p class="text-blue-600 text-sm font-semibold">09:00 AM - 11:30 AM</p>
+          <h3 class="font-bold text-gray-800 text-lg">Advanced Algorithms</h3>
+          <p class="text-gray-600 text-sm">Dr. Emily Watson | Room 5, Lecture Hall B</p>
+        </div>
+      </div>
+      <div class="flex gap-4 pt-4">
+        <div class="flex flex-col items-center w-10">
+          <span class="text-xs font-bold text-gray-400 uppercase">Tue</span>
+          <div class="w-[2px] h-full bg-gray-200 mt-2 rounded-full"></div>
+        </div>
+        <div class="flex-1 bg-gray-50 rounded-xl p-4 mb-2 border-l-4 border-gray-600">
+          <p class="text-gray-600 text-sm font-semibold">11:00 AM - 1:00 PM</p>
+          <h3 class="font-bold text-gray-800 text-lg">Introduction to Psychology</h3>
+          <p class="text-gray-600 text-sm">Dr. Yoo Jae Suk | Room 6, Lecture Hall C</p>
+        </div>
+      </div>
+      <div class="flex gap-4 pt-4">
+        <div class="flex flex-col items-center w-10">
+          <span class="text-xs font-bold text-gray-400 uppercase">Wed</span>
+          <div class="w-[2px] h-full bg-gray-200 mt-2 rounded-full"></div>
+        </div>
+        <div class="flex-1 bg-gray-50 rounded-xl p-4 mb-2 border-l-4 border-gray-600">
+          <p class="text-gray-600 text-sm font-semibold">10:00 AM - 12:00 PM</p>
+          <h3 class="font-bold text-gray-800 text-lg">UX Design</h3>
+          <p class="text-gray-600 text-sm">Dr. Tom Holland | Room 6, Lecture Hall A</p>
+        </div>
+      </div>
+    </div>
+    <div class="rounded-2xl px-6 py-6 bg-blue-600 shadow-sm border border-blue-100 text-white mt-6 flex flex-col gap-2">
+        <p class="text-xs font-semibold uppercase text-blue-200">Campus Updates</p>
+        <h2 class="text-3xl font-semibold leading-relaxed">Annual Academic Symposium 2026</h2>
+        <p class="text-sm font-regular my-2">Join us for the annual academic symposium featuring keynote speakers, poster presentations, and networking opportunities.</p>
+        <div class="py-2 px-3 w-fit rounded-lg text-center text-blue-600 bg-white">Submit Now</div>
+    </div>
+  </div>
+</div>

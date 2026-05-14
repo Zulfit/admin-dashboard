@@ -1,8 +1,12 @@
-<app-navbar></app-navbar>
+<div class="flex">
+  <app-navbar></app-navbar>
 
-<div class="ml-64 min-h-screen">
-  <app-header></app-header>
-  <main>
-    content
-  </main>
+  <div class="ml-64 flex-1">
+    <app-header></app-header>
+    <main>
+      <div class="px-8 py-8">
+        <app-dashboard></app-dashboard>
+      </div>
+    </main>
+  </div>
 </div>
