@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { HugeiconsIconComponent } from '@hugeicons/angular';
 
 import {
@@ -9,7 +10,7 @@ import {
 
 @Component({
   selector: 'app-navbar',
-  imports: [HugeiconsIconComponent],
+  imports: [HugeiconsIconComponent, RouterLink, RouterLinkActive],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })
