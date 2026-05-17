@@ -8,10 +8,11 @@ import {
   Book01Icon,
   Calendar01FreeIcons
 } from '@hugeicons/core-free-icons';
+import { ButtonCreate } from '../../components/button-create/button-create';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [HugeiconsIconComponent],
+  imports: [HugeiconsIconComponent, ButtonCreate],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })
