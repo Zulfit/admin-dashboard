@@ -1,0 +1,319 @@
+<div class="flex flex-col gap-6">
+  <!-- Header -->
+  <div class="flex flex-row justify-between">
+    <div class="flex flex-col gap-2">
+      <h1 class="text-2xl font-bold text-gray-800 tracking-tight">Subject Directory</h1>
+      <h1 class="text-xl text-gray-600">
+        Manage, filter and update academic subject records across all departments
+      </h1>
+    </div>
+    <app-button-create label="New Subject"></app-button-create>
+  </div>
+
+  <!-- STATS CARDS -->
+  <div class="grid grid-cols-3 gap-6">
+    <!-- CARD STUDENTS -->
+    <div class="rounded-2xl px-6 py-6 bg-white shadow-sm border border-gray-100">
+      <div class="flex justify-between items-center">
+        <div
+          class="rounded-lg bg-[#B7C4FF]/20 w-12 h-10 flex items-center justify-center px-3 py-3"
+        >
+          <hugeicons-icon
+            [icon]="studentIcon"
+            [size]="24"
+            [strokeWidth]="1.5"
+            color="currentColor"
+            class="text-[#003EC7]"
+          ></hugeicons-icon>
+        </div>
+        <div class="rounded-2xl bg-[#DCFCE7] text-[#16A34A] px-2 py-1 text-sm font-bold">+12%</div>
+      </div>
+      <div class="mt-6 gap-2 flex flex-col">
+        <p class="text-xs font-bold text-gray-400 tracking-tight">TOTAL STUDENTS</p>
+        <p class="text-3xl font-bold leading-9 text-gray-800">1,234</p>
+      </div>
+    </div>
+
+    <!-- CARD LECTURERS -->
+    <div class="rounded-2xl px-6 py-6 bg-white shadow-sm border border-gray-100">
+      <div class="flex justify-between items-center">
+        <div
+          class="rounded-lg bg-[#B7C4FF]/20 w-12 h-10 flex items-center justify-center px-3 py-3"
+        >
+          <hugeicons-icon
+            [icon]="teacherIcon"
+            [size]="24"
+            [strokeWidth]="1.5"
+            color="currentColor"
+            class="text-[#003EC7]"
+          ></hugeicons-icon>
+        </div>
+        <div class="rounded-2xl bg-[#DDE1FF] text-[#003EC7] px-2 py-1 text-sm font-bold">
+          Active
+        </div>
+      </div>
+      <div class="mt-6 gap-2 flex flex-col">
+        <p class="text-xs font-bold text-gray-400 tracking-tight uppercase">Active Students</p>
+        <p class="text-3xl font-bold leading-9 text-gray-800">1,100</p>
+      </div>
+    </div>
+
+    <!-- CARD SUBJECTS -->
+    <div class="rounded-2xl px-6 py-6 bg-white shadow-sm border border-gray-100">
+      <div class="flex justify-between items-center">
+        <div
+          class="rounded-lg bg-[#B7C4FF]/20 w-12 h-10 flex items-center justify-center px-3 py-3"
+        >
+          <hugeicons-icon
+            [icon]="bookIcon"
+            [size]="24"
+            [strokeWidth]="1.5"
+            color="currentColor"
+            class="text-[#003EC7]"
+          ></hugeicons-icon>
+        </div>
+        <div class="rounded-2xl bg-[#DDE1FF] text-[#003EC7] px-2 py-1 text-sm font-bold">
+          Active
+        </div>
+      </div>
+      <div class="mt-6 gap-2 flex flex-col">
+        <p class="text-xs font-bold text-gray-400 tracking-tight">ACTIVE SUBJECTS</p>
+        <p class="text-3xl font-bold leading-9 text-gray-800">45</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card Subject -->
+   <div class="grid grid-cols-3 gap-6">
+    <!-- Card 1 -->
+    <div class="rounded-2xl bg-white shadow-sm border border-gray-100">
+      <div class="flex flex-col items-start px-6 py-6 gap-4">
+        <div class="flex flex-col gap-2">
+          <div class="py-1 px-2 bg-blue-50 rounded-lg text-gray-600 font-bold text-sm w-fit">CS-302</div>
+          <p class="text-2xl font-bold leading-9 text-gray-800">Advanced Algorithms</p>
+        </div>
+
+        <div class="flex flex-col gap-4 w-full">
+            <div class="flex flex-row gap-2">
+                <div class="rounded-2xl bg-[#B7C4FF]/20 w-12 h-10 flex items-center justify-center px-3 py-3">
+                    <hugeicons-icon
+                        [icon]="userIcon"
+                        [size]="24"
+                        [strokeWidth]="1.5"
+                        color="currentColor"
+                        class="text-[#003EC7]"
+                    ></hugeicons-icon>
+                </div>
+                <div class="flex flex-col">
+                    <p class="text-xs font-bold text-gray-400 tracking-tight uppercase">Lecturer</p>
+                    <p class="text-sm font-medium text-gray-500 tracking-tight">Mesut Ozil</p>
+                </div>
+            </div>
+            <div class="h-[2px] w-full bg-gray-200"></div>
+        </div>
+        <div class="flex flex-col w-full pt-4 gap-2">
+            <div class="flex flex-row justify-between">
+                <p class="text-xs font-bold text-gray-400 tracking-tight uppercase">Total Students</p>
+                <p class="text-sm font-medium text-gray-500 tracking-tight">45/50</p>
+            </div>
+            <div class="h-[6px] w-full bg-gray-200 rounded-full">
+                <div class="h-[6px] w-[90%] bg-[#003EC7] rounded-full"></div>
+            </div>
+        </div>
+      </div>
+      <div class="flex flex-row justify-between py-3 px-6 border-t border-gray-300 bg-gray-100">
+        <div class="flex flex-row gap-2">
+            <hugeicons-icon
+                [icon]="clockIcon"
+                [size]="16"
+                [strokeWidth]="1.5"
+                color="currentColor"
+                class="text-gray-500"
+            ></hugeicons-icon>
+            <p class="text-xs font-regular text-gray-500 tracking-tight">Monday, 10:00 AM - 12:00 PM</p>
+        </div>
+        <div>
+            <p class="text-xs font-medium text-blue-600 tracking-tight">View Details</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="rounded-2xl bg-white shadow-sm border border-gray-100">
+      <div class="flex flex-col items-start px-6 py-6 gap-4">
+        <div class="flex flex-col gap-2">
+          <div class="py-1 px-2 bg-blue-50 rounded-lg text-gray-600 font-bold text-sm w-fit">CS-303</div>
+          <p class="text-2xl font-bold leading-9 text-gray-800">Data Science</p>
+        </div>
+
+        <div class="flex flex-col gap-4 w-full">
+            <div class="flex flex-row gap-2">
+                <div class="rounded-2xl bg-[#B7C4FF]/20 w-12 h-10 flex items-center justify-center px-3 py-3">
+                    <hugeicons-icon
+                        [icon]="userIcon"
+                        [size]="24"
+                        [strokeWidth]="1.5"
+                        color="currentColor"
+                        class="text-[#003EC7]"
+                    ></hugeicons-icon>
+                </div>
+                <div class="flex flex-col">
+                    <p class="text-xs font-bold text-gray-400 tracking-tight uppercase">Lecturer</p>
+                    <p class="text-sm font-medium text-gray-500 tracking-tight">Cristian Ronaldo</p>
+                </div>
+            </div>
+            <div class="h-[2px] w-full bg-gray-200"></div>
+        </div>
+        <div class="flex flex-col w-full pt-4 gap-2">
+            <div class="flex flex-row justify-between">
+                <p class="text-xs font-bold text-gray-400 tracking-tight uppercase">Total Students</p>
+                <p class="text-sm font-medium text-gray-500 tracking-tight">40/50</p>
+            </div>
+            <div class="h-[6px] w-full bg-gray-200 rounded-full">
+                <div class="h-[6px] w-[80%] bg-[#003EC7] rounded-full"></div>
+            </div>
+        </div>
+      </div>
+      <div class="flex flex-row justify-between py-3 px-6 border-t border-gray-300 bg-gray-100">
+        <div class="flex flex-row gap-2">
+            <hugeicons-icon
+                [icon]="clockIcon"
+                [size]="16"
+                [strokeWidth]="1.5"
+                color="currentColor"
+                class="text-gray-500"
+            ></hugeicons-icon>
+            <p class="text-xs font-regular text-gray-500 tracking-tight">Tuesday, 10:00 AM - 12:00 PM</p>
+        </div>
+        <div>
+            <p class="text-xs font-medium text-blue-600 tracking-tight">View Details</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="rounded-2xl bg-white shadow-sm border border-gray-100">
+      <div class="flex flex-col items-start px-6 py-6 gap-4">
+        <div class="flex flex-col gap-2">
+          <div class="py-1 px-2 bg-blue-50 rounded-lg text-gray-600 font-bold text-sm w-fit">CS-304</div>
+          <p class="text-2xl font-bold leading-9 text-gray-800">UI/UX Design</p>
+        </div>
+
+        <div class="flex flex-col gap-4 w-full">
+            <div class="flex flex-row gap-2">
+                <div class="rounded-2xl bg-[#B7C4FF]/20 w-12 h-10 flex items-center justify-center px-3 py-3">
+                    <hugeicons-icon
+                        [icon]="userIcon"
+                        [size]="24"
+                        [strokeWidth]="1.5"
+                        color="currentColor"
+                        class="text-[#003EC7]"
+                    ></hugeicons-icon>
+                </div>
+                <div class="flex flex-col">
+                    <p class="text-xs font-bold text-gray-400 tracking-tight uppercase">Lecturer</p>
+                    <p class="text-sm font-medium text-gray-500 tracking-tight">Lee Sung Kyung</p>
+                </div>
+            </div>
+            <div class="h-[2px] w-full bg-gray-200"></div>
+        </div>
+        <div class="flex flex-col w-full pt-4 gap-2">
+            <div class="flex flex-row justify-between">
+                <p class="text-xs font-bold text-gray-400 tracking-tight uppercase">Total Students</p>
+                <p class="text-sm font-medium text-gray-500 tracking-tight">35/50</p>
+            </div>
+            <div class="h-[6px] w-full bg-gray-200 rounded-full">
+                <div class="h-[6px] w-[70%] bg-[#003EC7] rounded-full"></div>
+            </div>
+        </div>
+      </div>
+      <div class="flex flex-row justify-between py-3 px-6 border-t border-gray-300 bg-gray-100">
+        <div class="flex flex-row gap-2">
+            <hugeicons-icon
+                [icon]="clockIcon"
+                [size]="16"
+                [strokeWidth]="1.5"
+                color="currentColor"
+                class="text-gray-500"
+            ></hugeicons-icon>
+            <p class="text-xs font-regular text-gray-500 tracking-tight">Wednesday, 10:00 AM - 12:00 PM</p>
+        </div>
+        <div>
+            <p class="text-xs font-medium text-blue-600 tracking-tight">View Details</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="rounded-2xl bg-white shadow-sm border border-gray-100">
+      <div class="flex flex-col items-start px-6 py-6 gap-4">
+        <div class="flex flex-col gap-2">
+          <div class="py-1 px-2 bg-blue-50 rounded-lg text-gray-600 font-bold text-sm w-fit">CS-305</div>
+          <p class="text-2xl font-bold leading-9 text-gray-800">Web Programming</p>
+        </div>
+
+        <div class="flex flex-col gap-4 w-full">
+            <div class="flex flex-row gap-2">
+                <div class="rounded-2xl bg-[#B7C4FF]/20 w-12 h-10 flex items-center justify-center px-3 py-3">
+                    <hugeicons-icon
+                        [icon]="userIcon"
+                        [size]="24"
+                        [strokeWidth]="1.5"
+                        color="currentColor"
+                        class="text-[#003EC7]"
+                    ></hugeicons-icon>
+                </div>
+                <div class="flex flex-col">
+                    <p class="text-xs font-bold text-gray-400 tracking-tight uppercase">Lecturer</p>
+                    <p class="text-sm font-medium text-gray-500 tracking-tight">Park Shin Hye</p>
+                </div>
+            </div>
+            <div class="h-[2px] w-full bg-gray-200"></div>
+        </div>
+        <div class="flex flex-col w-full pt-4 gap-2">
+            <div class="flex flex-row justify-between">
+                <p class="text-xs font-bold text-gray-400 tracking-tight uppercase">Total Students</p>
+                <p class="text-sm font-medium text-gray-500 tracking-tight">40/50</p>
+            </div>
+            <div class="h-[6px] w-full bg-gray-200 rounded-full">
+                <div class="h-[6px] w-[80%] bg-[#003EC7] rounded-full"></div>
+            </div>
+        </div>
+      </div>
+      <div class="flex flex-row justify-between py-3 px-6 border-t border-gray-300 bg-gray-100">
+        <div class="flex flex-row gap-2">
+            <hugeicons-icon
+                [icon]="clockIcon"
+                [size]="16"
+                [strokeWidth]="1.5"
+                color="currentColor"
+                class="text-gray-500"
+            ></hugeicons-icon>
+            <p class="text-xs font-regular text-gray-500 tracking-tight">Monday, 12:00 PM - 2:00 PM</p>
+        </div>
+        <div>
+            <p class="text-xs font-medium text-blue-600 tracking-tight">View Details</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="rounded-2xl bg-white shadow-sm border border-gray-100 flex flex-col items-center justify-center">
+      <div class="flex flex-col gap-3 items-center justify-center">
+        <div class="p-4 rounded-2xl bg-gray-200 flex items-center justify-center ">
+            <hugeicons-icon
+                [icon]="plusIcon"
+                [size]="24"
+                [strokeWidth]="1.5"
+                color="currentColor"
+                class="text-gray-600"
+            ></hugeicons-icon>
+        </div>
+        <div class="flex flex-col gap-2 text-center">
+            <p class="text-2xl font-bold leading-9 text-gray-800">Add Subject</p>
+            <p class="text-sm font-medium text-gray-500 tracking-tight">Click here to add a new subject</p>
+        </div>
+      </div>
+    </div>
+   </div>
+</div>

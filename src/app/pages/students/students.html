@@ -1,0 +1,396 @@
+<div class="flex flex-col gap-6">
+  <!-- Header -->
+  <div class="flex flex-row justify-between">
+    <div class="flex flex-col gap-2">
+      <h1 class="text-2xl font-bold text-gray-800 tracking-tight">Student Directory</h1>
+      <h1 class="text-xl text-gray-600">
+        Manage, filter and update academic student records across all departments
+      </h1>
+    </div>
+    <app-button-create label="New Student"></app-button-create>
+  </div>
+
+  <!-- STATS CARDS -->
+  <div class="grid grid-cols-3 gap-6">
+    <!-- CARD STUDENTS -->
+    <div class="rounded-2xl px-6 py-6 bg-white shadow-sm border border-gray-100">
+      <div class="flex justify-between items-center">
+        <div
+          class="rounded-lg bg-[#B7C4FF]/20 w-12 h-10 flex items-center justify-center px-3 py-3"
+        >
+          <hugeicons-icon
+            [icon]="studentIcon"
+            [size]="24"
+            [strokeWidth]="1.5"
+            color="currentColor"
+            class="text-[#003EC7]"
+          ></hugeicons-icon>
+        </div>
+        <div class="rounded-2xl bg-[#DCFCE7] text-[#16A34A] px-2 py-1 text-sm font-bold">+12%</div>
+      </div>
+      <div class="mt-6 gap-2 flex flex-col">
+        <p class="text-xs font-bold text-gray-400 tracking-tight">TOTAL STUDENTS</p>
+        <p class="text-3xl font-bold leading-9 text-gray-800">1,234</p>
+      </div>
+    </div>
+
+    <!-- CARD LECTURERS -->
+    <div class="rounded-2xl px-6 py-6 bg-white shadow-sm border border-gray-100">
+      <div class="flex justify-between items-center">
+        <div
+          class="rounded-lg bg-[#B7C4FF]/20 w-12 h-10 flex items-center justify-center px-3 py-3"
+        >
+          <hugeicons-icon
+            [icon]="teacherIcon"
+            [size]="24"
+            [strokeWidth]="1.5"
+            color="currentColor"
+            class="text-[#003EC7]"
+          ></hugeicons-icon>
+        </div>
+        <div class="rounded-2xl bg-[#DDE1FF] text-[#003EC7] px-2 py-1 text-sm font-bold">
+          Active
+        </div>
+      </div>
+      <div class="mt-6 gap-2 flex flex-col">
+        <p class="text-xs font-bold text-gray-400 tracking-tight uppercase">Active Students</p>
+        <p class="text-3xl font-bold leading-9 text-gray-800">1,100</p>
+      </div>
+    </div>
+
+    <!-- CARD SUBJECTS -->
+    <div class="rounded-2xl px-6 py-6 bg-white shadow-sm border border-gray-100">
+      <div class="flex justify-between items-center">
+        <div
+          class="rounded-lg bg-[#B7C4FF]/20 w-12 h-10 flex items-center justify-center px-3 py-3"
+        >
+          <hugeicons-icon
+            [icon]="bookIcon"
+            [size]="24"
+            [strokeWidth]="1.5"
+            color="currentColor"
+            class="text-[#003EC7]"
+          ></hugeicons-icon>
+        </div>
+        <div class="rounded-2xl bg-[#DDE1FF] text-[#003EC7] px-2 py-1 text-sm font-bold">
+          Active
+        </div>
+      </div>
+      <div class="mt-6 gap-2 flex flex-col">
+        <p class="text-xs font-bold text-gray-400 tracking-tight">ACTIVE SUBJECTS</p>
+        <p class="text-3xl font-bold leading-9 text-gray-800">45</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <div class="rounded-2xl bg-white shadow-sm border border-gray-100">
+    <!-- Filter -->
+    <div class="flex justify-between px-8 py-4 border-b border-gray-300">
+      <div class="flex flex-row gap-4">
+        <div class="px-3 py-2 border border-gray-300 rounded-md flex flex-row gap-2 items-center">
+          <hugeicons-icon
+            [icon]="filterIcon"
+            [size]="24"
+            [strokeWidth]="1.5"
+            color="currentColor"
+            class="text-[#003EC7]"
+          ></hugeicons-icon>
+          Filter by Dept
+        </div>
+        <div
+          class="px-3 py-2 border border-gray-300 rounded-md text-gray-600 font-medium flex flex-row gap-2 items-center"
+        >
+          <hugeicons-icon
+            [icon]="filterMailIcon"
+            [size]="24"
+            [strokeWidth]="1.5"
+            color="currentColor"
+            class="text-[#003EC7]"
+          ></hugeicons-icon>
+          Sort: ID
+        </div>
+      </div>
+    </div>
+    <!-- Header -->
+    <div class="grid grid-cols-6 gap-4 px-8 py-4 bg-gray-200 border-b border-gray-300">
+      <div class="grid-cols-1">
+        <p class="text-sm font-bold text-gray-500 tracking-tight uppercase">Student ID</p>
+      </div>
+      <div class="grid-cols-1">
+        <p class="text-sm font-bold text-gray-500 tracking-tight uppercase">Name</p>
+      </div>
+      <div class="grid-cols-1">
+        <p class="text-sm font-bold text-gray-500 tracking-tight uppercase">Email</p>
+      </div>
+      <div class="grid-cols-1">
+        <p class="text-sm font-bold text-gray-500 tracking-tight uppercase">Department</p>
+      </div>
+      <div class="grid-cols-1">
+        <p class="text-sm font-bold text-gray-500 tracking-tight uppercase">Status</p>
+      </div>
+      <div class="grid-cols-1">
+        <p class="text-sm font-bold text-gray-500 tracking-tight uppercase">Actions</p>
+      </div>
+    </div>
+    <!-- Body -->
+    <div class="grid grid-cols-6 gap-4 px-8 py-4 border-b border-gray-300">
+      <div class="grid-cols-1">
+        <p class="text-sm font-medium text-gray-500 tracking-tight">LCT001</p>
+      </div>
+      <div class="grid-cols-1">
+        <p class="text-sm font-medium text-gray-500 tracking-tight">Mesut Ozil</p>
+      </div>
+      <div class="grid-cols-1">
+        <p class="text-sm font-medium text-gray-500 tracking-tight">email@gmail.com</p>
+      </div>
+      <div class="grid-cols-1">
+        <p class="text-sm font-medium text-gray-500 tracking-tight">Computer Science</p>
+      </div>
+      <div class="grid-cols-1">
+        <p class="text-sm font-medium text-gray-500 tracking-tight">Active</p>
+      </div>
+      <div class="grid-cols-1">
+        <div class="flex flex-row gap-4">
+          <hugeicons-icon
+            [icon]="viewIcon"
+            [size]="24"
+            [strokeWidth]="1.5"
+            color="currentColor"
+            class="text-[#003EC7]"
+          ></hugeicons-icon>
+          <hugeicons-icon
+            [icon]="editIcon"
+            [size]="24"
+            [strokeWidth]="1.5"
+            color="currentColor"
+            class="text-green-600"
+          ></hugeicons-icon>
+          <hugeicons-icon
+            [icon]="deleteIcon"
+            [size]="24"
+            [strokeWidth]="1.5"
+            color="currentColor"
+            class="text-red-600"
+          ></hugeicons-icon>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-6 gap-4 px-8 py-4 border-b border-gray-300">
+      <div class="grid-cols-1">
+        <p class="text-sm font-medium text-gray-500 tracking-tight">LCT001</p>
+      </div>
+      <div class="grid-cols-1">
+        <p class="text-sm font-medium text-gray-500 tracking-tight">Mesut Ozil</p>
+      </div>
+      <div class="grid-cols-1">
+        <p class="text-sm font-medium text-gray-500 tracking-tight">email@gmail.com</p>
+      </div>
+      <div class="grid-cols-1">
+        <p class="text-sm font-medium text-gray-500 tracking-tight">Computer Science</p>
+      </div>
+      <div class="grid-cols-1">
+        <p class="text-sm font-medium text-gray-500 tracking-tight">Active</p>
+      </div>
+      <div class="grid-cols-1">
+        <div class="flex flex-row gap-4">
+          <hugeicons-icon
+            [icon]="viewIcon"
+            [size]="24"
+            [strokeWidth]="1.5"
+            color="currentColor"
+            class="text-[#003EC7]"
+          ></hugeicons-icon>
+          <hugeicons-icon
+            [icon]="editIcon"
+            [size]="24"
+            [strokeWidth]="1.5"
+            color="currentColor"
+            class="text-green-600"
+          ></hugeicons-icon>
+          <hugeicons-icon
+            [icon]="deleteIcon"
+            [size]="24"
+            [strokeWidth]="1.5"
+            color="currentColor"
+            class="text-red-600"
+          ></hugeicons-icon>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-6 gap-4 px-8 py-4 border-b border-gray-300">
+      <div class="grid-cols-1">
+        <p class="text-sm font-medium text-gray-500 tracking-tight">LCT001</p>
+      </div>
+      <div class="grid-cols-1">
+        <p class="text-sm font-medium text-gray-500 tracking-tight">Mesut Ozil</p>
+      </div>
+      <div class="grid-cols-1">
+        <p class="text-sm font-medium text-gray-500 tracking-tight">email@gmail.com</p>
+      </div>
+      <div class="grid-cols-1">
+        <p class="text-sm font-medium text-gray-500 tracking-tight">Computer Science</p>
+      </div>
+      <div class="grid-cols-1">
+        <p class="text-sm font-medium text-gray-500 tracking-tight">Active</p>
+      </div>
+      <div class="grid-cols-1">
+        <div class="flex flex-row gap-4">
+          <hugeicons-icon
+            [icon]="viewIcon"
+            [size]="24"
+            [strokeWidth]="1.5"
+            color="currentColor"
+            class="text-[#003EC7]"
+          ></hugeicons-icon>
+          <hugeicons-icon
+            [icon]="editIcon"
+            [size]="24"
+            [strokeWidth]="1.5"
+            color="currentColor"
+            class="text-green-600"
+          ></hugeicons-icon>
+          <hugeicons-icon
+            [icon]="deleteIcon"
+            [size]="24"
+            [strokeWidth]="1.5"
+            color="currentColor"
+            class="text-red-600"
+          ></hugeicons-icon>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-6 gap-4 px-8 py-4 border-b border-gray-300">
+      <div class="grid-cols-1">
+        <p class="text-sm font-medium text-gray-500 tracking-tight">LCT001</p>
+      </div>
+      <div class="grid-cols-1">
+        <p class="text-sm font-medium text-gray-500 tracking-tight">Mesut Ozil</p>
+      </div>
+      <div class="grid-cols-1">
+        <p class="text-sm font-medium text-gray-500 tracking-tight">email@gmail.com</p>
+      </div>
+      <div class="grid-cols-1">
+        <p class="text-sm font-medium text-gray-500 tracking-tight">Computer Science</p>
+      </div>
+      <div class="grid-cols-1">
+        <p class="text-sm font-medium text-gray-500 tracking-tight">Active</p>
+      </div>
+      <div class="grid-cols-1">
+        <div class="flex flex-row gap-4">
+          <hugeicons-icon
+            [icon]="viewIcon"
+            [size]="24"
+            [strokeWidth]="1.5"
+            color="currentColor"
+            class="text-[#003EC7]"
+          ></hugeicons-icon>
+          <hugeicons-icon
+            [icon]="editIcon"
+            [size]="24"
+            [strokeWidth]="1.5"
+            color="currentColor"
+            class="text-green-600"
+          ></hugeicons-icon>
+          <hugeicons-icon
+            [icon]="deleteIcon"
+            [size]="24"
+            [strokeWidth]="1.5"
+            color="currentColor"
+            class="text-red-600"
+          ></hugeicons-icon>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-6 gap-4 px-8 py-4 border-b border-gray-300">
+      <div class="grid-cols-1">
+        <p class="text-sm font-medium text-gray-500 tracking-tight">LCT001</p>
+      </div>
+      <div class="grid-cols-1">
+        <p class="text-sm font-medium text-gray-500 tracking-tight">Mesut Ozil</p>
+      </div>
+      <div class="grid-cols-1">
+        <p class="text-sm font-medium text-gray-500 tracking-tight">email@gmail.com</p>
+      </div>
+      <div class="grid-cols-1">
+        <p class="text-sm font-medium text-gray-500 tracking-tight">Computer Science</p>
+      </div>
+      <div class="grid-cols-1">
+        <p class="text-sm font-medium text-gray-500 tracking-tight">Active</p>
+      </div>
+      <div class="grid-cols-1">
+        <div class="flex flex-row gap-4">
+          <hugeicons-icon
+            [icon]="viewIcon"
+            [size]="24"
+            [strokeWidth]="1.5"
+            color="currentColor"
+            class="text-[#003EC7]"
+          ></hugeicons-icon>
+          <hugeicons-icon
+            [icon]="editIcon"
+            [size]="24"
+            [strokeWidth]="1.5"
+            color="currentColor"
+            class="text-green-600"
+          ></hugeicons-icon>
+          <hugeicons-icon
+            [icon]="deleteIcon"
+            [size]="24"
+            [strokeWidth]="1.5"
+            color="currentColor"
+            class="text-red-600"
+          ></hugeicons-icon>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Table -->
+    <div class="flex justify-between px-8 py-4">
+      <div class="flex flex-row items-center">
+        <p class="text-sm font-medium text-gray-500 tracking-tight">
+          Showing 1 to 10 of 100 results
+        </p>
+      </div>
+      <div class="flex flex-row gap-4">
+        <button
+          class="px-4 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-blue-50 hover:text-blue-700 transition-all duration-200 group"
+        >
+          <hugeicons-icon
+            [icon]="leftArrowIcon"
+            [size]="24"
+            [strokeWidth]="1.5"
+            color="currentColor"
+            class="text-[#003EC7]"
+          ></hugeicons-icon>
+        </button>
+        <button
+          class="px-4 py-2 rounded-lg text-sm font-medium text-blue-600 bg-blue-50 hover:bg-blue-50 hover:text-blue-700 transition-all duration-200 group"
+        >
+          1
+        </button>
+        <button
+          class="px-4 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-blue-50 hover:text-blue-700 transition-all duration-200 group"
+        >
+          2
+        </button>
+        <button
+          class="px-4 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-blue-50 hover:text-blue-700 transition-all duration-200 group"
+        >
+          3
+        </button>
+        <button
+          class="px-4 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-blue-50 hover:text-blue-700 transition-all duration-200 group"
+        >
+          <hugeicons-icon
+            [icon]="rightArrowIcon"
+            [size]="24"
+            [strokeWidth]="1.5"
+            color="currentColor"
+            class="text-[#003EC7]"
+          ></hugeicons-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
