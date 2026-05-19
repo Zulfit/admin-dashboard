@@ -1,0 +1,28 @@
+<div *ngIf="isOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-0">
+  <!-- Backdrop -->
+  <div 
+    class="fixed inset-0 bg-gray-900/50 backdrop-blur-sm transition-opacity" 
+    (click)="closeModal()">
+  </div>
+
+  <!-- Modal Panel -->
+  <div class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+    
+    <!-- Header -->
+    <div class="bg-white px-4 py-4 sm:px-6 border-b border-gray-100 flex justify-between items-center">
+      <h3 class="text-lg font-semibold leading-6 text-gray-900">{{ title }}</h3>
+      <button 
+        type="button" 
+        class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        (click)="closeModal()">
+        <hugeicons-icon [icon]="closeIcon" [size]="20" [strokeWidth]="1.5"></hugeicons-icon>
+      </button>
+    </div>
+
+    <!-- Content Area for Form -->
+    <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+      <ng-content></ng-content>
+    </div>
+
+  </div>
+</div>

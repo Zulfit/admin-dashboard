@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { HugeiconsIconComponent } from '@hugeicons/angular';
 import { PlusSignIcon } from '@hugeicons/core-free-icons';
 
@@ -11,6 +11,7 @@ import { PlusSignIcon } from '@hugeicons/core-free-icons';
 })
 export class ButtonCreate {
   @Input() label: string = 'Create';
+  @Output() action = new EventEmitter<void>();
   plusIcon = PlusSignIcon;
 
 }

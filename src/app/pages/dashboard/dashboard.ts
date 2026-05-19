@@ -9,10 +9,14 @@ import {
   Calendar01FreeIcons
 } from '@hugeicons/core-free-icons';
 import { ButtonCreate } from '../../components/button-create/button-create';
+import { ModalComponent } from '../../components/modal/modal';
+import { DynamicFormComponent } from '../../components/dynamic-form/dynamic-form';
+import { FormField } from '../../models/form-field';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [HugeiconsIconComponent, ButtonCreate],
+  standalone: true,
+  imports: [HugeiconsIconComponent, ButtonCreate, ModalComponent, DynamicFormComponent],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })
@@ -22,4 +26,47 @@ export class Dashboard {
   teacherIcon = TeacherIcon;
   bookIcon = Book01Icon;
   scheduleIcon = Calendar01FreeIcons;
+
+  isModalOpen = false;
+
+  studentFormFields: FormField[] = [
+    { name: 'name', label: 'Student Name', type: 'text', required: true },
+    { name: 'idNumber', label: 'ID Number', type: 'number', required: true },
+    { name: 'email', label: 'Email Address', type: 'email', required: true },
+    { 
+      name: 'course', 
+      label: 'Course', 
+      type: 'select', 
+      required: true, 
+      options: [
+        { label: 'Computer Science', value: 'Computer Science' },
+        { label: 'Business Administration', value: 'Business Administration' },
+        { label: 'Engineering', value: 'Engineering' }
+      ]
+    },
+    { 
+      name: 'status', 
+      label: 'Status', 
+      type: 'select', 
+      required: true, 
+      options: [
+        { label: 'Active', value: 'Active' },
+        { label: 'Inactive', value: 'Inactive' }
+      ]
+    }
+  ];
+
+  openModal() {
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+  }
+
+  onFormSubmit(data: any) {
+    console.log('Form Submitted!', data);
+    // Here you would normally call your service to save the data
+    this.closeModal();
+  }
 }

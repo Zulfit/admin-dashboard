@@ -1,0 +1,53 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="flex flex-col gap-4">
+  
+  <div *ngFor="let field of fields" class="flex flex-col gap-1.5">
+    <label [for]="field.name" class="text-sm font-semibold text-gray-700">
+      {{ field.label }} <span *ngIf="field.required" class="text-red-500">*</span>
+    </label>
+
+    <!-- Text / Email / Number / Date Inputs -->
+    <input 
+      *ngIf="field.type === 'text' || field.type === 'email' || field.type === 'number' || field.type === 'date'"
+      [type]="field.type" 
+      [id]="field.name"
+      [formControlName]="field.name"
+      class="block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:text-sm transition-colors"
+      [placeholder]="'Enter ' + field.label"
+    />
+
+    <!-- Select Dropdown -->
+    <select 
+      *ngIf="field.type === 'select'"
+      [id]="field.name"
+      [formControlName]="field.name"
+      class="block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:text-sm transition-colors bg-white">
+      <option value="" disabled selected>Select {{ field.label }}</option>
+      <option *ngFor="let option of field.options" [value]="option.value">
+        {{ option.label }}
+      </option>
+    </select>
+
+    <!-- Textarea -->
+    <textarea 
+      *ngIf="field.type === 'textarea'"
+      [id]="field.name"
+      [formControlName]="field.name"
+      rows="4"
+      class="block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:text-sm transition-colors"
+      [placeholder]="'Enter ' + field.label">
+    </textarea>
+
+    <!-- Error message -->
+    <span *ngIf="formGroup.get(field.name)?.invalid && formGroup.get(field.name)?.touched" class="text-xs text-red-500 mt-1">
+      {{ field.label }} is required.
+    </span>
+  </div>
+
+  <div class="mt-4 flex justify-end gap-3">
+    <button 
+      type="submit" 
+      class="rounded-lg bg-blue-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors">
+      Save
+    </button>
+  </div>
+</form>
