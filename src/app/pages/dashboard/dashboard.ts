@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { HugeiconsIconComponent } from '@hugeicons/angular';
 
 import {
@@ -12,6 +12,7 @@ import { ButtonCreate } from '../../components/button-create/button-create';
 import { ModalComponent } from '../../components/modal/modal';
 import { DynamicFormComponent } from '../../components/dynamic-form/dynamic-form';
 import { FormField } from '../../models/form-field';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-dashboard',
@@ -28,6 +29,8 @@ export class Dashboard {
   scheduleIcon = Calendar01FreeIcons;
 
   isModalOpen = false;
+
+  private http = inject(HttpClient);
 
   studentFormFields: FormField[] = [
     { name: 'name', label: 'Student Name', type: 'text', required: true },
@@ -66,7 +69,15 @@ export class Dashboard {
 
   onFormSubmit(data: any) {
     console.log('Form Submitted!', data);
-    // Here you would normally call your service to save the data
-    this.closeModal();
+
+    this.http.post('http://localhost:3000/students', data).subscribe({
+      next: (response) => {
+        console.log('Student created successfully:', response);
+        this.closeModal();
+      },
+      error: (error) => {
+        console.error('Error creating student:', error);
+      }
+    });
   }
 }
