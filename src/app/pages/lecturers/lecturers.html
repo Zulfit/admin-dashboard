@@ -7,7 +7,7 @@
         Overview and administration of academic staff and faculty members.
       </h1>
     </div>
-    <app-button-create label="New Lecturer"></app-button-create>
+    <app-button-create label="New Lecturer" (action)="openModal()"></app-button-create>
   </div>
 
   <!-- Stats Cards -->
@@ -451,3 +451,16 @@
     </div>
    </div>
 </div>
+
+<!-- Create Lecturer Modal -->
+<app-modal 
+  [isOpen]="isModalOpen" 
+  title="Create New Lecturer" 
+  (close)="closeModal()">
+  
+  <app-dynamic-form 
+    [fields]="lecturersFormFields" 
+    (formSubmit)="onFormSubmit($event)">
+  </app-dynamic-form>
+
+</app-modal>
