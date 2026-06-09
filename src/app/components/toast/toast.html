@@ -1,0 +1,30 @@
+<div
+  class="fixed top-4 right-4 z-[100] flex max-w-sm items-start gap-3 rounded-xl border px-4 py-3 shadow-lg"
+  [class.bg-[#DCFCE7]]="type() === 'success'"
+  [class.border-[#BBF7D0]]="type() === 'success'"
+  [class.text-[#166534]]="type() === 'success'"
+  [class.bg-[#FEE2E2]]="type() === 'error'"
+  [class.border-[#FECACA]]="type() === 'error'"
+  [class.text-[#991B1B]]="type() === 'error'"
+  role="alert"
+>
+  <hugeicons-icon
+    [icon]="type() === 'success' ? successIcon : errorIcon"
+    [size]="20"
+    [strokeWidth]="1.5"
+    class="mt-0.5 shrink-0"
+  ></hugeicons-icon>
+
+  <p class="flex-1 text-sm font-medium">{{ message() }}</p>
+
+  <button
+    type="button"
+    class="shrink-0 rounded-md opacity-70 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2"
+    [class.focus:ring-[#16A34A]]="type() === 'success'"
+    [class.focus:ring-[#DC2626]]="type() === 'error'"
+    (click)="onDismiss()"
+    aria-label="Dismiss notification"
+  >
+    <hugeicons-icon [icon]="closeIcon" [size]="16" [strokeWidth]="1.5"></hugeicons-icon>
+  </button>
+</div>
