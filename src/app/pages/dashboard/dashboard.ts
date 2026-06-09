@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { HugeiconsIconComponent } from '@hugeicons/angular';
 
 import {
@@ -11,13 +11,14 @@ import {
 import { ButtonCreate } from '../../components/button-create/button-create';
 import { ModalComponent } from '../../components/modal/modal';
 import { DynamicFormComponent } from '../../components/dynamic-form/dynamic-form';
+import { ToastComponent } from '../../components/toast/toast';
 import { FormField } from '../../models/form-field';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [HugeiconsIconComponent, ButtonCreate, ModalComponent, DynamicFormComponent],
+  imports: [HugeiconsIconComponent, ButtonCreate, ModalComponent, DynamicFormComponent, ToastComponent],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })
@@ -28,13 +29,16 @@ export class Dashboard {
   bookIcon = Book01Icon;
   scheduleIcon = Calendar01FreeIcons;
 
-  isModalOpen = false;
+  isModalOpen = signal(false);
+  toastMessage = signal<string | null>(null);
+  toastType = signal<'success' | 'error'>('success');
 
   private http = inject(HttpClient);
+  private toastTimeout?: ReturnType<typeof setTimeout>;
 
   studentFormFields: FormField[] = [
     { name: 'name', label: 'Student Name', type: 'text', required: true },
-    { name: 'idNumber', label: 'ID Number', type: 'number', required: true },
+    { name: 'idNumber', label: 'ID Number', type: 'text', required: true },
     { name: 'email', label: 'Email Address', type: 'email', required: true },
     { 
       name: 'course', 
@@ -60,24 +64,43 @@ export class Dashboard {
   ];
 
   openModal() {
-    this.isModalOpen = true;
+    this.isModalOpen.set(true);
   }
 
   closeModal() {
-    this.isModalOpen = false;
+    this.isModalOpen.set(false);
   }
 
-  onFormSubmit(data: any) {
-    console.log('Form Submitted!', data);
+  dismissToast() {
+    if (this.toastTimeout) {
+      clearTimeout(this.toastTimeout);
+      this.toastTimeout = undefined;
+    }
+    this.toastMessage.set(null);
+  }
 
+  private showToast(message: string, type: 'success' | 'error') {
+    if (this.toastTimeout) {
+      clearTimeout(this.toastTimeout);
+    }
+
+    this.toastMessage.set(message);
+    this.toastType.set(type);
+
+    this.toastTimeout = setTimeout(() => this.dismissToast(), 5000);
+  }
+
+  onFormSubmit(data: Record<string, unknown>) {
     this.http.post('http://localhost:3000/students', data).subscribe({
-      next: (response) => {
-        console.log('Student created successfully:', response);
+      next: () => {
         this.closeModal();
+        this.showToast('Student created successfully.', 'success');
       },
       error: (error) => {
-        console.error('Error creating student:', error);
-      }
+        const message =
+          error.error?.message ?? error.message ?? 'Failed to create student. Please try again.';
+        this.showToast(message, 'error');
+      },
     });
   }
 }

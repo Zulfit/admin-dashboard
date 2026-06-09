@@ -1,3 +1,11 @@
+@if (toastMessage(); as message) {
+  <app-toast
+    [message]="message"
+    [type]="toastType()"
+    (dismiss)="dismissToast()"
+  ></app-toast>
+}
+
 <div class="flex flex-row justify-between">
   <div class="flex flex-col gap-2">
     <h1 class="text-2xl font-bold text-gray-800 tracking-tight">Dashboard</h1>
@@ -240,7 +248,7 @@
 
 <!-- Create Student Modal -->
 <app-modal 
-  [isOpen]="isModalOpen" 
+  [isOpen]="isModalOpen()" 
   title="Create New Student" 
   (close)="closeModal()">
   
