@@ -1,3 +1,11 @@
+@if (toastMessage(); as message) {
+  <app-toast
+    [message]="message"
+    [type]="toastType()"
+    (dismiss)="dismissToast()"
+  ></app-toast>
+}
+
 <div class="flex flex-col gap-6">
   <!-- Header -->
   <div class="flex flex-row justify-between">
@@ -7,7 +15,7 @@
         Manage, filter and update academic student records across all departments
       </h1>
     </div>
-    <app-button-create label="New Student"></app-button-create>
+    <app-button-create label="New Student" (action)="openModal()"></app-button-create>
   </div>
 
   <!-- STATS CARDS -->
@@ -394,3 +402,15 @@
     </div>
   </div>
 </div>
+
+<!-- Create Student Modal -->
+<app-modal
+  [isOpen]="isModalOpen()"
+  title="Create New Student"
+  (close)="closeModal()"
+>
+  <app-dynamic-form
+    [fields]="studentFormFields"
+    (formSubmit)="onFormSubmit($event)"
+  ></app-dynamic-form>
+</app-modal>
