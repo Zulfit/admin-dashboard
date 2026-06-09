@@ -1,3 +1,11 @@
+@if (toastMessage(); as message) {
+  <app-toast
+    [message]="message"
+    [type]="toastType()"
+    (dismiss)="dismissToast()"
+  ></app-toast>
+}
+
 <div class="flex flex-col gap-6">
   <!-- Header -->
   <div class="flex flex-row justify-between">
@@ -7,7 +15,7 @@
         Manage, filter and update academic subject records across all departments
       </h1>
     </div>
-    <app-button-create label="New Subject"></app-button-create>
+    <app-button-create label="New Subject" (action)="openModal()"></app-button-create>
   </div>
 
   <!-- STATS CARDS -->
@@ -298,7 +306,13 @@
     </div>
 
     <!-- Card 5 -->
-    <div class="rounded-2xl bg-white shadow-sm border border-gray-100 flex flex-col items-center justify-center">
+    <div
+      class="rounded-2xl bg-white shadow-sm border border-gray-100 flex flex-col items-center justify-center cursor-pointer hover:border-blue-200 transition-colors"
+      (click)="openModal()"
+      role="button"
+      tabindex="0"
+      (keydown.enter)="openModal()"
+    >
       <div class="flex flex-col gap-3 items-center justify-center">
         <div class="p-4 rounded-2xl bg-gray-200 flex items-center justify-center ">
             <hugeicons-icon
@@ -317,3 +331,15 @@
     </div>
    </div>
 </div>
+
+<!-- Create Subject Modal -->
+<app-modal
+  [isOpen]="isModalOpen()"
+  title="Create New Subject"
+  (close)="closeModal()"
+>
+  <app-dynamic-form
+    [fields]="subjectFormFields"
+    (formSubmit)="onFormSubmit($event)"
+  ></app-dynamic-form>
+</app-modal>
