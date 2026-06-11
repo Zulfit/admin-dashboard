@@ -1,5 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { HugeiconsIconComponent } from '@hugeicons/angular';
 
 import {
@@ -22,6 +21,8 @@ import { ModalComponent } from '../../components/modal/modal';
 import { DynamicFormComponent } from '../../components/dynamic-form/dynamic-form';
 import { ToastComponent } from '../../components/toast/toast';
 import { FormField } from '../../models/form-field';
+import { Student } from '../../models/student.model';
+import { StudentsService } from '../../services/students.service';
 
 @Component({
   selector: 'app-students',
@@ -35,7 +36,7 @@ import { FormField } from '../../models/form-field';
   templateUrl: './students.html',
   styleUrl: './students.css',
 })
-export class Students {
+export class Students implements OnInit {
   studentIcon = StudentIcon;
   teacherIcon = TeacherIcon;
   bookIcon = Book01Icon;
@@ -52,8 +53,16 @@ export class Students {
   isModalOpen = signal(false);
   toastMessage = signal<string | null>(null);
   toastType = signal<'success' | 'error'>('success');
+  students = signal<Student[]>([]);
+  loading = signal(false);
+  error = signal('');
 
-  private http = inject(HttpClient);
+  totalStudents = computed(() => this.students().length);
+  activeStudents = computed(
+    () => this.students().filter((student) => student.status === 'Active').length,
+  );
+
+  private studentsService = inject(StudentsService);
   private toastTimeout?: ReturnType<typeof setTimeout>;
 
   studentFormFields: FormField[] = [
@@ -83,6 +92,10 @@ export class Students {
     },
   ];
 
+  ngOnInit(): void {
+    this.loadStudents();
+  }
+
   openModal() {
     this.isModalOpen.set(true);
   }
@@ -110,11 +123,28 @@ export class Students {
     this.toastTimeout = setTimeout(() => this.dismissToast(), 5000);
   }
 
+  loadStudents() {
+    this.loading.set(true);
+    this.error.set('');
+
+    this.studentsService.getAll().subscribe({
+      next: (data) => {
+        this.students.set(data);
+        this.loading.set(false);
+      },
+      error: () => {
+        this.error.set('Failed to load students.');
+        this.loading.set(false);
+      },
+    });
+  }
+
   onFormSubmit(data: Record<string, unknown>) {
-    this.http.post('http://localhost:3000/students', data).subscribe({
+    this.studentsService.create(data).subscribe({
       next: () => {
         this.closeModal();
         this.showToast('Student created successfully.', 'success');
+        this.loadStudents();
       },
       error: (error) => {
         const message =

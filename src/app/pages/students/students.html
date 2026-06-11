@@ -38,7 +38,7 @@
       </div>
       <div class="mt-6 gap-2 flex flex-col">
         <p class="text-xs font-bold text-gray-400 tracking-tight">TOTAL STUDENTS</p>
-        <p class="text-3xl font-bold leading-9 text-gray-800">1,234</p>
+        <p class="text-3xl font-bold leading-9 text-gray-800">{{ totalStudents() }}</p>
       </div>
     </div>
 
@@ -62,7 +62,7 @@
       </div>
       <div class="mt-6 gap-2 flex flex-col">
         <p class="text-xs font-bold text-gray-400 tracking-tight uppercase">Active Students</p>
-        <p class="text-3xl font-bold leading-9 text-gray-800">1,100</p>
+        <p class="text-3xl font-bold leading-9 text-gray-800">{{ activeStudents() }}</p>
       </div>
     </div>
 
@@ -142,222 +142,70 @@
       </div>
     </div>
     <!-- Body -->
-    <div class="grid grid-cols-6 gap-4 px-8 py-4 border-b border-gray-300">
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">LCT001</p>
+    @if (loading()) {
+      <div class="px-8 py-8 text-center">
+        <p class="text-sm font-medium text-gray-500">Loading students...</p>
       </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Mesut Ozil</p>
+    } @else if (error()) {
+      <div class="px-8 py-8 text-center">
+        <p class="text-sm font-medium text-red-600">{{ error() }}</p>
       </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">email@gmail.com</p>
+    } @else if (students().length === 0) {
+      <div class="px-8 py-8 text-center">
+        <p class="text-sm font-medium text-gray-500">No students found.</p>
       </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Computer Science</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Active</p>
-      </div>
-      <div class="grid-cols-1">
-        <div class="flex flex-row gap-4">
-          <hugeicons-icon
-            [icon]="viewIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-[#003EC7]"
-          ></hugeicons-icon>
-          <hugeicons-icon
-            [icon]="editIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-green-600"
-          ></hugeicons-icon>
-          <hugeicons-icon
-            [icon]="deleteIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-red-600"
-          ></hugeicons-icon>
+    } @else {
+      @for (student of students(); track student.id) {
+        <div class="grid grid-cols-6 gap-4 px-8 py-4 border-b border-gray-300">
+          <div class="grid-cols-1">
+            <p class="text-sm font-medium text-gray-500 tracking-tight">{{ student.idNumber }}</p>
+          </div>
+          <div class="grid-cols-1">
+            <p class="text-sm font-medium text-gray-500 tracking-tight">{{ student.name }}</p>
+          </div>
+          <div class="grid-cols-1">
+            <p class="text-sm font-medium text-gray-500 tracking-tight">{{ student.email }}</p>
+          </div>
+          <div class="grid-cols-1">
+            <p class="text-sm font-medium text-gray-500 tracking-tight">{{ student.course }}</p>
+          </div>
+          <div class="grid-cols-1">
+            <p class="text-sm font-medium text-gray-500 tracking-tight">{{ student.status }}</p>
+          </div>
+          <div class="grid-cols-1">
+            <div class="flex flex-row gap-4">
+              <hugeicons-icon
+                [icon]="viewIcon"
+                [size]="24"
+                [strokeWidth]="1.5"
+                color="currentColor"
+                class="text-[#003EC7]"
+              ></hugeicons-icon>
+              <hugeicons-icon
+                [icon]="editIcon"
+                [size]="24"
+                [strokeWidth]="1.5"
+                color="currentColor"
+                class="text-green-600"
+              ></hugeicons-icon>
+              <hugeicons-icon
+                [icon]="deleteIcon"
+                [size]="24"
+                [strokeWidth]="1.5"
+                color="currentColor"
+                class="text-red-600"
+              ></hugeicons-icon>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-6 gap-4 px-8 py-4 border-b border-gray-300">
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">LCT001</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Mesut Ozil</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">email@gmail.com</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Computer Science</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Active</p>
-      </div>
-      <div class="grid-cols-1">
-        <div class="flex flex-row gap-4">
-          <hugeicons-icon
-            [icon]="viewIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-[#003EC7]"
-          ></hugeicons-icon>
-          <hugeicons-icon
-            [icon]="editIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-green-600"
-          ></hugeicons-icon>
-          <hugeicons-icon
-            [icon]="deleteIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-red-600"
-          ></hugeicons-icon>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-6 gap-4 px-8 py-4 border-b border-gray-300">
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">LCT001</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Mesut Ozil</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">email@gmail.com</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Computer Science</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Active</p>
-      </div>
-      <div class="grid-cols-1">
-        <div class="flex flex-row gap-4">
-          <hugeicons-icon
-            [icon]="viewIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-[#003EC7]"
-          ></hugeicons-icon>
-          <hugeicons-icon
-            [icon]="editIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-green-600"
-          ></hugeicons-icon>
-          <hugeicons-icon
-            [icon]="deleteIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-red-600"
-          ></hugeicons-icon>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-6 gap-4 px-8 py-4 border-b border-gray-300">
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">LCT001</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Mesut Ozil</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">email@gmail.com</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Computer Science</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Active</p>
-      </div>
-      <div class="grid-cols-1">
-        <div class="flex flex-row gap-4">
-          <hugeicons-icon
-            [icon]="viewIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-[#003EC7]"
-          ></hugeicons-icon>
-          <hugeicons-icon
-            [icon]="editIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-green-600"
-          ></hugeicons-icon>
-          <hugeicons-icon
-            [icon]="deleteIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-red-600"
-          ></hugeicons-icon>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-6 gap-4 px-8 py-4 border-b border-gray-300">
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">LCT001</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Mesut Ozil</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">email@gmail.com</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Computer Science</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Active</p>
-      </div>
-      <div class="grid-cols-1">
-        <div class="flex flex-row gap-4">
-          <hugeicons-icon
-            [icon]="viewIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-[#003EC7]"
-          ></hugeicons-icon>
-          <hugeicons-icon
-            [icon]="editIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-green-600"
-          ></hugeicons-icon>
-          <hugeicons-icon
-            [icon]="deleteIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-red-600"
-          ></hugeicons-icon>
-        </div>
-      </div>
-    </div>
+      }
+    }
 
     <!-- Footer Table -->
     <div class="flex justify-between px-8 py-4">
       <div class="flex flex-row items-center">
         <p class="text-sm font-medium text-gray-500 tracking-tight">
-          Showing 1 to 10 of 100 results
+          Showing {{ totalStudents() }} result@if (totalStudents() !== 1) {s}
         </p>
       </div>
       <div class="flex flex-row gap-4">
