@@ -37,7 +37,7 @@
       </div>
       <div class="mt-6 gap-2 flex flex-col">
         <p class="text-xs font-bold text-gray-400 tracking-tight uppercase">Total Lecturers</p>
-        <p class="text-3xl font-bold leading-9 text-gray-800">148</p>
+        <p class="text-3xl font-bold leading-9 text-gray-800">{{ totalLecturers() }}</p>
       </div>
     </div>
     <div class="rounded-2xl px-6 py-6 bg-white shadow-sm border border-gray-100">
@@ -123,221 +123,69 @@
       </div>
     </div>
     <!-- Body -->
-    <div class="grid grid-cols-6 gap-4 px-8 py-4 border-b border-gray-300">
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">LCT001</p>
+    @if (loading()) {
+      <div class="px-8 py-8 text-center">
+        <p class="text-sm font-medium text-gray-500">Loading lecturers...</p>
       </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Mesut Ozil</p>
+    } @else if (error()) {
+      <div class="px-8 py-8 text-center">
+        <p class="text-sm font-medium text-red-600">{{ error() }}</p>
       </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Computer Science</p>
+    } @else if (lecturers().length === 0) {
+      <div class="px-8 py-8 text-center">
+        <p class="text-sm font-medium text-gray-500">No lecturers found.</p>
       </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Cybersecurity</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Active</p>
-      </div>
-      <div class="grid-cols-1">
-        <div class="flex flex-row gap-4">
-          <hugeicons-icon
-            [icon]="viewIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-[#003EC7]"
-          ></hugeicons-icon>
-          <hugeicons-icon
-            [icon]="editIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-green-600"
-          ></hugeicons-icon>
-          <hugeicons-icon
-            [icon]="deleteIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-red-600"
-          ></hugeicons-icon>
+    } @else {
+      @for (lecturer of lecturers(); track lecturer.id) {
+        <div class="grid grid-cols-6 gap-4 px-8 py-4 border-b border-gray-300">
+          <div class="grid-cols-1">
+            <p class="text-sm font-medium text-gray-500 tracking-tight">{{ lecturer.id }}</p>
+          </div>
+          <div class="grid-cols-1">
+            <p class="text-sm font-medium text-gray-500 tracking-tight">{{ lecturer.name }}</p>
+          </div>
+          <div class="grid-cols-1">
+            <p class="text-sm font-medium text-gray-500 tracking-tight">{{ lecturer.email }}</p>
+          </div>
+          <div class="grid-cols-1">
+            <p class="text-sm font-medium text-gray-500 tracking-tight">{{ lecturer.course }}</p>
+          </div>
+          <div class="grid-cols-1">
+            <p class="text-sm font-medium text-gray-500 tracking-tight">{{ lecturer.status }}</p>
+          </div>
+          <div class="grid-cols-1">
+            <div class="flex flex-row gap-4">
+              <hugeicons-icon
+                [icon]="viewIcon"
+                [size]="24"
+                [strokeWidth]="1.5"
+                color="currentColor"
+                class="text-[#003EC7]"
+              ></hugeicons-icon>
+              <hugeicons-icon
+                [icon]="editIcon"
+                [size]="24"
+                [strokeWidth]="1.5"
+                color="currentColor"
+                class="text-green-600"
+              ></hugeicons-icon>
+              <hugeicons-icon
+                [icon]="deleteIcon"
+                [size]="24"
+                [strokeWidth]="1.5"
+                color="currentColor"
+                class="text-red-600"
+              ></hugeicons-icon>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-6 gap-4 px-8 py-4 border-b border-gray-300">
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">LCT001</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Mesut Ozil</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Computer Science</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Cybersecurity</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Active</p>
-      </div>
-      <div class="grid-cols-1">
-        <div class="flex flex-row gap-4">
-          <hugeicons-icon
-            [icon]="viewIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-[#003EC7]"
-          ></hugeicons-icon>
-          <hugeicons-icon
-            [icon]="editIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-green-600"
-          ></hugeicons-icon>
-          <hugeicons-icon
-            [icon]="deleteIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-red-600"
-          ></hugeicons-icon>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-6 gap-4 px-8 py-4 border-b border-gray-300">
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">LCT001</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Mesut Ozil</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Computer Science</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Cybersecurity</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Active</p>
-      </div>
-      <div class="grid-cols-1">
-        <div class="flex flex-row gap-4">
-          <hugeicons-icon
-            [icon]="viewIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-[#003EC7]"
-          ></hugeicons-icon>
-          <hugeicons-icon
-            [icon]="editIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-green-600"
-          ></hugeicons-icon>
-          <hugeicons-icon
-            [icon]="deleteIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-red-600"
-          ></hugeicons-icon>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-6 gap-4 px-8 py-4 border-b border-gray-300">
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">LCT001</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Mesut Ozil</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Computer Science</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Cybersecurity</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Active</p>
-      </div>
-      <div class="grid-cols-1">
-        <div class="flex flex-row gap-4">
-          <hugeicons-icon
-            [icon]="viewIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-[#003EC7]"
-          ></hugeicons-icon>
-          <hugeicons-icon
-            [icon]="editIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-green-600"
-          ></hugeicons-icon>
-          <hugeicons-icon
-            [icon]="deleteIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-red-600"
-          ></hugeicons-icon>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-6 gap-4 px-8 py-4 border-b border-gray-300">
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">LCT001</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Mesut Ozil</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Computer Science</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Cybersecurity</p>
-      </div>
-      <div class="grid-cols-1">
-        <p class="text-sm font-medium text-gray-500 tracking-tight">Active</p>
-      </div>
-      <div class="grid-cols-1">
-        <div class="flex flex-row gap-4">
-          <hugeicons-icon
-            [icon]="viewIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-[#003EC7]"
-          ></hugeicons-icon>
-          <hugeicons-icon
-            [icon]="editIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-green-600"
-          ></hugeicons-icon>
-          <hugeicons-icon
-            [icon]="deleteIcon"
-            [size]="24"
-            [strokeWidth]="1.5"
-            color="currentColor"
-            class="text-red-600"
-          ></hugeicons-icon>
-        </div>
-      </div>
-    </div>
+      }
+    }
 
     <!-- Footer Table -->
      <div class="flex justify-between px-8 py-4">
         <div class="flex flex-row items-center">
-            <p class="text-sm font-medium text-gray-500 tracking-tight">Showing 1 to 10 of 100 results</p>
+            <p class="text-sm font-medium text-gray-500 tracking-tight">Showing {{ totalLecturers() }} result@if (totalLecturers() !== 1) {s} of 100 results</p>
         </div>
         <div class="flex flex-row gap-4">
             <button class="px-4 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-blue-50 hover:text-blue-700 transition-all duration-200 group">

@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { HugeiconsIconComponent } from '@hugeicons/angular';
 import { HttpClient } from '@angular/common/http';
 import { FormField } from '../../models/form-field';
@@ -21,6 +21,8 @@ import { ButtonCreate } from '../../components/button-create/button-create';
 import { ModalComponent } from '../../components/modal/modal';
 import { DynamicFormComponent } from '../../components/dynamic-form/dynamic-form';
 import { ToastComponent } from '../../components/toast/toast';
+import { Lecturer } from '../../models/lecturer.model';
+import { LecturersService } from '../../services/lecturers.service';
 
 @Component({
   selector: 'app-lecturers',
@@ -51,8 +53,16 @@ export class Lecturers {
   isModalOpen = signal(false);
   toastMessage = signal<string | null>(null);
   toastType = signal<'success' | 'error'>('success');
+  lecturers = signal<Lecturer[]>([]);
+  loading = signal(false);
+  error = signal('');
 
-  private http = inject(HttpClient);
+  totalLecturers = computed(() => this.lecturers().length);
+  activeLecturers = computed(
+    () => this.lecturers().filter((lecturer) => lecturer.status === 'Active').length,
+  );
+
+  private lecturersService = inject(LecturersService);
   private toastTimeout?: ReturnType<typeof setTimeout>;
 
   lecturersFormFields: FormField[] = [
@@ -109,8 +119,24 @@ export class Lecturers {
     this.toastTimeout = setTimeout(() => this.dismissToast(), 5000);
   }
 
+  loadLecturers() {
+    this.loading.set(true);
+    this.error.set('');
+
+    this.lecturersService.getAll().subscribe({
+      next: (data) => {
+        this.lecturers.set(data);
+        this.loading.set(false);
+      },
+      error: () => {
+        this.error.set('Failed to load lecturers.');
+        this.loading.set(false);
+      },
+    });
+  }
+
   onFormSubmit(data: Record<string, unknown>) {
-    this.http.post('http://localhost:3000/lecturers', data).subscribe({
+    this.lecturersService.create(data).subscribe({
       next: () => {
         this.closeModal();
         this.showToast('Lecturer created successfully.', 'success');
